@@ -9,7 +9,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 # Flask dependencies
-from flask import Flask
+from flask import Flask, jsonify
 
 # Set up database engine
 engine = create_engine("sqlite:///hawaii.sqlite")
@@ -30,14 +30,13 @@ app = Flask(__name__)
 @app.route("/")
 def welcome():
     return(
-    '''
-    Welcome to the Climate Analysis API!
-    Available Routes:
-    /api/v1.0/precipitation
-    /api/v1.0/stations
-    /api/v1.0/tobs
-    /api/v1.0/temp/start/end
-    ''')
+    f"Welcome to the Climate Analysis API!<br/>"
+    f"Available Routes:<br/>"
+    f"<a href='/api/v1.0/precipitation'>Precipitation</a><br/>"
+    f"<a href='/api/v1.0/stations'>Stations</a><br/>"
+    f"<a href='/api/v1.0/tobs'>Temp Observations</a><br/>"
+    f"<a href='/api/v1.0/temp/start/end'>Temps</a>"
+    )
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
@@ -53,7 +52,7 @@ def stations():
     stations = list(np.ravel(results))
     return jsonify(stations=stations)
 
-@app.route("/api/v1.0.tobs")
+@app.route("/api/v1.0/tobs")
 def temp_monthly():
     prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     results = session.query(Measurement.tobs).\
