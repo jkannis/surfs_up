@@ -10,8 +10,10 @@ The purpose of this project is to provide weather data to convince an investor t
     - The difference between maximum temperatures in June and December is only two degrees.
 
 ### Weather Summary Results
+- June Weather Data
 ![June Weather Data](https://github.com/jkannis/surfs_up/blob/main/Resources/June_describe.png)
 
+- December Weather Data
 ![December Weather Data](https://github.com/jkannis/surfs_up/blob/main/Resources/Dec_describe.png)
 
 ## Summary
